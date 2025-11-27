@@ -50,8 +50,9 @@
 
 2. **プロジェクトディレクトリに移動**:
    ```powershell
-   cd C:\Users\alred\.gemini\antigravity\playground\warped-nadir\weight_tracker
+   cd <プロジェクトのパス>
    ```
+
 
 3. **ビルドファイルを生成**:
    ```powershell
