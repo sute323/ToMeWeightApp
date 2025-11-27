@@ -1,42 +1,124 @@
 # Weight Tracker App
 
-A personal weight tracking application built with Flutter.
+日々の体重と体調を記録する個人用トラッカーアプリです。
 
-## Features
-- **Dark Mode**: Deep dark theme for comfortable viewing.
-- **Daily Tracking**: Log Weight, Body Fat, Muscle Mass.
-- **Stamps & Memos**: Add multiple stamps and memos per day.
-- **Trends**: View weekly and monthly graphs.
-- **CSV Import**: Import data from other apps.
-- **Local Storage**: Data is stored locally using Hive.
+## 特徴
 
-## How to Run
+### 📊 データ記録
+- **体重・体脂肪**: 毎日の体重と体脂肪率を記録
+- **睡眠時間**: 10分刻みで睡眠時間を入力（例: 6時間30分 → "630"）
+- **ムードスタンプ**: 5段階の気分を絵文字で記録
+  - 😫 とても悪い (0点)
+  - ☹️ 悪い (1点)
+  - 😐 普通 (2点)
+  - 🙂 良い (3点)
+  - 😀 とても良い (4点)
+- **カスタムスタンプ**: 自由にスタンプを追加・削除可能
+- **メモ機能**: 複数のメモを日付ごとに記録
 
-Since the project files were generated manually, you need to perform a one-time setup to generate the Android build files.
+### 📅 カレンダー表示
+- 月別カレンダーで日々のデータを一覧表示
+- 平均睡眠時間と平均ムードスコアを月次で表示
+- 当日の日付を強調表示
 
-1.  **Open a Terminal** (Command Prompt or PowerShell).
-2.  **Navigate to the project directory**:
-    ```powershell
-    cd C:\Users\alred\.gemini\antigravity\playground\warped-nadir\weight_tracker
-    ```
-3.  **Generate Build Files**:
-    Run the following command to recreate the Android/iOS project structure:
-    ```powershell
-    flutter create .
-    ```
-    *(Note the dot `.` at the end, which means "current directory")*
+### 📈 グラフ表示
+- 体重と体脂肪のトレンドを視覚化
+- 週次・月次での推移を確認可能
 
-4.  **Install Dependencies**:
-    ```powershell
-    flutter pub get
-    ```
+### 🔄 データのインポート/エクスポート
+- **CSVエクスポート**: 全データをCSV形式でエクスポート
+- **CSVインポート**: 他のアプリからデータをインポート
+- エクスポート形式: 日付、体重、体脂肪、睡眠時間、スタンプ、メモ
 
-5.  **Run the App**:
-    Connect your Android phone via USB (ensure USB Debugging is on) and run:
-    ```powershell
-    flutter run
-    ```
+### 🎨 デザイン
+- **ダークモードテーマ**: 目に優しい深い暗色テーマ
+- **日本語UI**: 完全日本語対応
+- **カスタムフォント**: Oswald フォントを使用
 
-## Troubleshooting
-- If you see errors about `minSdkVersion`, open `android/app/build.gradle` (after running `flutter create .`) and change `minSdkVersion` to `21` or higher.
-- If `flutter create .` fails, ensure you have Flutter installed and in your PATH.
+### 💾 ローカルストレージ
+- Hiveを使用したローカルデータベース
+- インターネット接続不要
+- プライバシー保護
+
+## 使い方
+
+### 初回セットアップ
+
+プロジェクトファイルが手動で生成されているため、初回のみビルドファイルの生成が必要です。
+
+1. **ターミナルを開く**（コマンドプロンプトまたはPowerShell）
+
+2. **プロジェクトディレクトリに移動**:
+   ```powershell
+   cd C:\Users\alred\.gemini\antigravity\playground\warped-nadir\weight_tracker
+   ```
+
+3. **ビルドファイルを生成**:
+   ```powershell
+   flutter create .
+   ```
+   ※末尾のドット `.` は「現在のディレクトリ」を意味します
+
+4. **依存関係をインストール**:
+   ```powershell
+   flutter pub get
+   ```
+
+5. **アプリを実行**:
+   Android端末をUSBで接続（USBデバッグを有効化）して実行:
+   ```powershell
+   flutter run
+   ```
+
+### 基本操作
+
+#### データ入力
+1. ホーム画面上部の日付を確認（タップで日付変更可能）
+2. 体重・体脂肪・睡眠時間を入力
+   - タップすると専用キーパッドが表示されます
+   - 睡眠時間は10分刻みで入力（例: 6時間30分 → "630"）
+3. ムードスタンプを選択
+4. 必要に応じてカスタムスタンプを追加
+5. メモを追加（"タップしてメモを追加"をタップ）
+
+#### カスタムスタンプの管理
+- 新規追加: スタンプ入力欄に絵文字を入力
+- 削除: スタンプを長押しして削除ダイアログを表示
+
+#### データの確認
+- **カレンダー**: 下部ナビゲーションの「📅」アイコンをタップ
+- **グラフ**: 下部ナビゲーションの「📊」アイコンをタップ
+
+#### データのエクスポート/インポート
+1. 下部ナビゲーションの「⚙️」アイコンをタップ
+2. 「CSVエクスポート」または「CSVインポート」を選択
+3. ファイルを保存または選択
+
+## 技術スタック
+
+- **フレームワーク**: Flutter
+- **状態管理**: Provider
+- **データベース**: Hive
+- **グラフ**: fl_chart
+- **カレンダー**: table_calendar
+- **ファイル操作**: file_picker, path_provider
+- **データ処理**: csv, intl
+- **フォント**: Google Fonts (Oswald)
+
+## トラブルシューティング
+
+- `minSdkVersion` エラーが出る場合:
+  - `flutter create .` 実行後、`android/app/build.gradle` を開き
+  - `minSdkVersion` を `21` 以上に変更してください
+
+- `flutter create .` が失敗する場合:
+  - Flutter がインストールされているか確認
+  - PATH環境変数に Flutter が含まれているか確認
+
+- データが表示されない場合:
+  - アプリを再起動してみてください
+  - データベースファイルが破損している可能性があります
+
+## ライセンス
+
+個人使用目的のプロジェクトです。
